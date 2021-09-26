@@ -70,13 +70,15 @@ def gen_image_from_text(text, font_size, fontdir, text_color='#ff0000', transpar
 
 
 if __name__ == "__main__":
-    fontdirs = ['./font/ThuThuatExcel.Com-VNI-TRIDICO New.ttf',
-                './font/vni.common.VALLERGO.ttf',
-                './font/vni.common.VARISON.ttf', 
+    fontdirs = ['./font/VNI-TRIDICOnew.ttf',
+                './font/VNI-Allegie.TTF',
+                './font/VNI-Ariston.TTF', 
                 './title_font/VNI-Helve.TTF',
-                './title_font/VNI-Aptima.TTF',]
+                './title_font/VNI-Aptima.TTF',
+                './title_font/verdana.TTF']
 
-    gen_image_from_text(text='TỔNG GIÁM ĐỐC', 
+    gen_image_from_text(text='Nguyễn Văn A', 
                         font_size=80, 
-                        fontdir=fontdirs[4], 
+                        fontdir=fontdirs[0], 
+                        text_color='#0000ff',
                         transparent_bg=False).show()

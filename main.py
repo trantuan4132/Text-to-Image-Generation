@@ -1,8 +1,8 @@
 import os
 import argparse
 from datetime import datetime
+import random
 from PIL import Image
-import numpy as np
 from utils import gen_image_from_text
 
 
@@ -48,8 +48,8 @@ class NameStampGenerator(object):
         """Generate image with 1-line text as name stamp"""
         for i in range(n_images):
             # Select text and font directory from list at random
-            text = np.random.choice(self.texts)
-            fontdir = np.random.choice(self.name_fontdirs)
+            text = random.choice(self.texts)
+            fontdir = random.choice(self.name_fontdirs)
 
             # Generate image
             image = gen_image_from_text(text, self.name_font_size, fontdir=fontdir, 
@@ -64,13 +64,13 @@ class NameStampGenerator(object):
         """Generate image with 2-line text (1st line for job title, 2nd line for name) """
         for i in range(n_images):
             # Select text and font directory from list at random
-            text = np.random.choice(self.texts)
+            text = random.choice(self.texts)
             title, name = text.split('|')
             title = title.strip().upper()
             name = name.strip()
-            name_fontdir = np.random.choice(self.name_fontdirs)
+            name_fontdir = random.choice(self.name_fontdirs)
             if len(self.title_fontdirs) > 0:
-                title_fontdir = np.random.choice(self.title_fontdirs)
+                title_fontdir = random.choice(self.title_fontdirs)
             else:
                 title_fontdir = name_fontdir
 
@@ -85,7 +85,7 @@ class NameStampGenerator(object):
             w_name, h_name = name_image.size[:2]
 
             # Create a new image
-            line_spacing = np.random.randint(low=5, high=30)
+            line_spacing = random.randint(5, 30)
             width = max(w_title, w_name)
             height = h_title + line_spacing + h_name
             alpha = 0 if self.transparent_bg else 255
