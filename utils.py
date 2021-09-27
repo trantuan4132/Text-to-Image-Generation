@@ -75,10 +75,11 @@ if __name__ == "__main__":
                 './font/VNI-Ariston.TTF', 
                 './title_font/VNI-Helve.TTF',
                 './title_font/VNI-Aptima.TTF',
-                './title_font/verdana.TTF']
+                './title_font/verdana.TTF',
+                './title_font/Calibrib.TTF']
 
     gen_image_from_text(text='Nguyễn Văn A', 
                         font_size=80, 
                         fontdir=fontdirs[0], 
-                        text_color='#0000ff',
+                        text_color='#ff0000',
                         transparent_bg=False).show()

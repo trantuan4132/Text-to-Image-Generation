@@ -16,7 +16,7 @@ def parse_args():
     parser.add_argument('-nf', '--name_fontdir', type=str, help="Path to folder containing font for name", default="./font", required=False)
     parser.add_argument('-tf', '--title_fontdir', type=str, help="Path to folder containing font for job title", default="./title_font", required=False)
     parser.add_argument('-tc', '--text_color', type=str, help="Color of text in hex code", default="#ff0000", required=False)
-    parser.add_argument('-tb', '--transparent_bg', type=str, help="Set to True for generating transparent background, set to False otherwise", default=False, required=False)
+    parser.add_argument('-tb', '--transparent_bg', type=str, help="Set to True for generating transparent background, set to False otherwise", default=True, required=False)
     parser.add_argument('-o', '--outdir', type=str, help="Path to folder for saving output images", default="./output", required=False)
     args = parser.parse_args()
     return args
