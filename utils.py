@@ -80,5 +80,5 @@ if __name__ == "__main__":
     gen_image_from_text(text='Nguyễn Văn A', 
                         font_size=80, 
                         fontdir=fontdirs[0], 
-                        text_color='#2e5ab4', 
+                        text_color='#3353b1', 
                         transparent_bg=False).show()

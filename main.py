@@ -11,8 +11,8 @@ def parse_args():
     parser.add_argument('-n', '--n_images', type=int, help="Number of images to be generated", required=True) 
     parser.add_argument('-l', '--n_lines', type=int, help="Number of lines of text to generate in a image (1 line for name stamp, 2 lines for name stamp with job title)", required=True)
     parser.add_argument('-t', '--textdir', type=str, help="Path to file containing text", required=True)
-    parser.add_argument('-ns', '--name_font_size', type=int, help="Size of text font for name", default=48, required=False)
-    parser.add_argument('-ts', '--title_font_size', type=int, help="Size of text font for job title", default=28, required=False)
+    parser.add_argument('-ns', '--name_font_size', type=int, help="Size of text font for name", default=40, required=False)
+    parser.add_argument('-ts', '--title_font_size', type=int, help="Size of text font for job title", default=20, required=False)
     parser.add_argument('-nf', '--name_fontdir', type=str, help="Path to folder containing font for name", default="./font", required=False)
     parser.add_argument('-tf', '--title_fontdir', type=str, help="Path to folder containing font for job title", default="./title_font", required=False)
     parser.add_argument('-tc', '--text_color', type=str, help="Color of text in hex code", default="#ff0000", required=False)
@@ -108,8 +108,11 @@ def main():
         os.makedirs(args.outdir)
 
     # Load list of text from file
+    texts = []
     with open(args.textdir, encoding='utf-8') as file:
-        texts = file.read().split('\n')
+        for line in file:
+            if len(line.strip()) > 0:
+                texts.append(line.strip())
 
     # Load name font from directory
     name_fontdirs = []
@@ -118,9 +121,8 @@ def main():
 
     # Load job title font from directory
     title_fontdirs = []
-    if args.title_fontdir is not None:
-        for file in os.listdir(args.title_fontdir):
-            title_fontdirs.append(os.path.join(args.title_fontdir, file))
+    for file in os.listdir(args.title_fontdir):
+        title_fontdirs.append(os.path.join(args.title_fontdir, file))
 
     # Generate image with text
     generator = NameStampGenerator(texts, 
