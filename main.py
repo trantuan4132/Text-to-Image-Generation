@@ -11,8 +11,8 @@ def parse_args():
     parser.add_argument('-n', '--n_images', type=int, help="Number of images to be generated", required=True) 
     parser.add_argument('-l', '--n_lines', type=int, help="Number of lines of text to generate in a image (1 line for name stamp, 2 lines for name stamp with job title)", required=True)
     parser.add_argument('-t', '--textdir', type=str, help="Path to file containing text", required=True)
-    parser.add_argument('-ns', '--name_font_size', type=int, help="Size of text font for name", default=80, required=False)
-    parser.add_argument('-ts', '--title_font_size', type=int, help="Size of text font for job title", default=40, required=False)
+    parser.add_argument('-ns', '--name_font_size', type=int, help="Size of text font for name", default=48, required=False)
+    parser.add_argument('-ts', '--title_font_size', type=int, help="Size of text font for job title", default=28, required=False)
     parser.add_argument('-nf', '--name_fontdir', type=str, help="Path to folder containing font for name", default="./font", required=False)
     parser.add_argument('-tf', '--title_fontdir', type=str, help="Path to folder containing font for job title", default="./title_font", required=False)
     parser.add_argument('-tc', '--text_color', type=str, help="Color of text in hex code", default="#ff0000", required=False)
@@ -85,7 +85,7 @@ class NameStampGenerator(object):
             w_name, h_name = name_image.size[:2]
 
             # Create a new image
-            line_spacing = random.randint(5, 30)
+            line_spacing = random.randint(10, 30)
             width = max(w_title, w_name)
             height = h_title + line_spacing + h_name
             alpha = 0 if self.transparent_bg else 255
