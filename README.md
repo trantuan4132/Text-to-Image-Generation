@@ -41,7 +41,7 @@ Trưởng nhóm | Hoàng Văn Lâm
 ```
 
 If you only have file containing job titles only and you want concatenate each job title with all of the name listed in your other file, you can use the following command:
-```bash
+```
 $ python3 concat_title_name.py
 
 usage: concat_title_name.py [-h] [-n NAMEDIR] [-t TITLEDIR] [-o OUTDIR] [-lr MAX_LENGTH_RATIO]
