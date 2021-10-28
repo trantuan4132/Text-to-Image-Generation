@@ -137,6 +137,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-output/*
-title.txt
-name_title.py
+output
+ho_ten
+ho_ten_chuc_danh
+run.sh
