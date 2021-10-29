@@ -31,7 +31,7 @@ def parse_args():
     parser.add_argument('--transparent_bg', action="store_true", default=False, required=False, 
                         help="Generating transparent background if specified, generate white background otherwise")
     parser.add_argument('--line_spacing', type=int, nargs='+', default=[10, 25], required=False, 
-                        help="Spacing between lines of text for job title and name, enter 1 argument for fixed spacing (Ex: 15), \
+                        help="Number of pixels between lines of text for job title and name, enter 1 argument for fixed spacing (Ex: 15), \
                               enter 2 arguments for lower and upper bound of random spacing (Ex: 10 25)")
     parser.add_argument('--title_first_prob', type=float, default=1.0, required=False, 
                         help="Probability for job title to appear in 1st line (0.0 -> 1.0)")
@@ -65,6 +65,43 @@ class NameStampGenerator(object):
         max_height_ratio=None,
         outdir="./output"
     ):
+        """
+        Generate name stamp images from given input text
+
+        Arguments
+        ---------
+            textdir : str
+                Path to file containing text
+            name_font_size : list of ints
+                Size of text font for name, list with 1 element for fixed size (Ex: [40]),
+                list with 2 elements for lower and upper bound of random size (Ex: [20, 40])
+            title_font_size : list of ints
+                Size of text font for job title, list with 1 element for fixed size (Ex: [20]),
+                list with 2 elements for lower and upper bound of random size (Ex: [20, 40]) 
+            name_fontdir : str
+                Path to .ttf file or folder containing fonts for name
+            title_fontdir : str
+                Path to .ttf file or folder containing fonts for job title
+            text_color : str
+                Color of text in hex code
+            transparent_bg : bool
+                Generating transparent background if specified, generate white background otherwise
+            line_spacing : list of ints
+                Number of pixels between lines of text for job title and name, list with 1 element for fixed spacing (Ex: [15]),
+                list with 2 elements for lower and upper bound of random spacing (Ex: [10, 25])
+            title_first_prob : float
+                Probability for job title to appear in 1st line (0.0 -> 1.0)
+            name_uppercase_prob : float
+                Probability of text being converted to uppercase for name (0.0 -> 1.0)
+            title_uppercase_prob : float
+                Probability of text being converted to uppercase for job title (0.0 -> 1.0)
+            max_width_ratio : float
+                Maximum width ratio of text for job title over text for name
+            max_height_ratio : float
+                Maximum height ratio of text for job title over text for name
+            outdir : str
+                Path to folder for saving output images
+        """
         self.texts = self.load_text(textdir)
         self.name_font_size = name_font_size
         self.title_font_size = title_font_size
@@ -146,7 +183,9 @@ class NameStampGenerator(object):
             image.save(os.path.join(self.outdir, filename))
 
     def gen_name_stamp_with_job_title(self, n_images):
-        """Generate image with 2-line text (1st line for job title, 2nd line for name) """
+        """
+        Generate image with 2-line text (1st line for job title, 2nd line for name)
+        """
         for i in range(n_images):
             # Select text from list at random and process text 
             title, name = random.choice(self.texts)

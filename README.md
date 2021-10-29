@@ -41,7 +41,7 @@ Trưởng nhóm | Hoàng Văn Lâm
 ```
 
 If you only have file containing job titles only and you want concatenate each job title with all of the name listed in your other file, you can use the following command:
-```bash
+```
 $ python3 concat_title_name.py
 
 usage: concat_title_name.py [-h] [-n NAMEDIR] [-t TITLEDIR] [-o OUTDIR] [-lr MAX_LENGTH_RATIO]
@@ -64,11 +64,14 @@ Default fonts used in this repository is mainly used to generate Vietnamese name
 
 Then, you can start generating images using `main.py`:
 ```
-usage: main.py [-h] -n N_IMAGES -l N_LINES -t TEXTDIR [-o OUTDIR] [--name_font_size NAME_FONT_SIZE [NAME_FONT_SIZE ...]]
-               [--title_font_size TITLE_FONT_SIZE [TITLE_FONT_SIZE ...]] [--name_fontdir NAME_FONTDIR] [--title_fontdir TITLE_FONTDIR]
-               [--text_color TEXT_COLOR] [--transparent_bg] [--line_spacing LINE_SPACING [LINE_SPACING ...]] [--title_first_prob TITLE_FIRST_PROB]
+usage: main.py [-h] -n N_IMAGES -l N_LINES -t TEXTDIR [-o OUTDIR]
+               [--name_font_size NAME_FONT_SIZE [NAME_FONT_SIZE ...]]
+               [--title_font_size TITLE_FONT_SIZE [TITLE_FONT_SIZE ...]] [--name_fontdir NAME_FONTDIR]
+               [--title_fontdir TITLE_FONTDIR] [--text_color TEXT_COLOR] [--transparent_bg]
+               [--line_spacing LINE_SPACING [LINE_SPACING ...]] [--title_first_prob TITLE_FIRST_PROB]
                [--name_uppercase_prob NAME_UPPERCASE_PROB] [--title_uppercase_prob TITLE_UPPERCASE_PROB]
-               [--title_name_max_width_ratio TITLE_NAME_MAX_WIDTH_RATIO] [--title_name_max_height_ratio TITLE_NAME_MAX_HEIGHT_RATIO]
+               [--title_name_max_width_ratio TITLE_NAME_MAX_WIDTH_RATIO]
+               [--title_name_max_height_ratio TITLE_NAME_MAX_HEIGHT_RATIO]
 
 Generate name stamp images from text
 
@@ -77,17 +80,18 @@ optional arguments:
   -n N_IMAGES, --n_images N_IMAGES
                         Number of images to be generated
   -l N_LINES, --n_lines N_LINES
-                        Number of lines of text to generate in a image (1 line for name stamp, 2 lines for name stamp with job title)
+                        Number of lines of text to generate in a image (1 line for name stamp, 2 lines for name stamp
+                        with job title)
   -t TEXTDIR, --textdir TEXTDIR
                         Path to file containing text
   -o OUTDIR, --outdir OUTDIR
                         Path to folder for saving output images
   --name_font_size NAME_FONT_SIZE [NAME_FONT_SIZE ...]
-                        Size of text font for name, enter 1 argument for fixed size (Ex: 40), enter 2 arguments for lower and upper bound of random size (Ex:   
-                        20 40)
+                        Size of text font for name, enter 1 argument for fixed size (Ex: 40), enter 2 arguments for
+                        lower and upper bound of random size (Ex: 20 40)
   --title_font_size TITLE_FONT_SIZE [TITLE_FONT_SIZE ...]
-                        Size of text font for job title, enter 1 argument for fixed size (Ex: 20), enter 2 arguments for lower and upper bound of random size   
-                        (Ex: 20 40)
+                        Size of text font for job title, enter 1 argument for fixed size (Ex: 20), enter 2 arguments
+                        for lower and upper bound of random size (Ex: 20 40)
   --name_fontdir NAME_FONTDIR
                         Path to .ttf file or folder containing fonts for name
   --title_fontdir TITLE_FONTDIR
@@ -96,8 +100,8 @@ optional arguments:
                         Color of text in hex code
   --transparent_bg      Generating transparent background if specified, generate white background otherwise
   --line_spacing LINE_SPACING [LINE_SPACING ...]
-                        Spacing between lines of text for job title and name, enter 1 argument for fixed spacing (Ex: 15), enter 2 arguments for lower and      
-                        upper bound of random spacing (Ex: 10 25)
+                        Number of pixels between lines of text for job title and name, enter 1 argument for fixed
+                        spacing (Ex: 15), enter 2 arguments for lower and upper bound of random spacing (Ex: 10 25)
   --title_first_prob TITLE_FIRST_PROB
                         Probability for job title to appear in 1st line (0.0 -> 1.0)
   --name_uppercase_prob NAME_UPPERCASE_PROB
